@@ -1,0 +1,80 @@
+<div class="example-container">
+    <mat-toolbar class="example-toolbar">
+        <button mat-icon-button (click)="sidenav.toggle()">
+            @if (!sidenav.opened) {
+                <mat-icon>menu</mat-icon>
+            }@else {
+                <mat-icon>close</mat-icon>
+            }
+        </button>
+
+        <span>Library </span>
+
+        <span class="example-spacer"></span>
+
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+                <mat-icon>account_box</mat-icon>
+                <span>My account</span>
+            </button>
+            <button mat-menu-item (click)="sidenav.opened = false">
+                <mat-icon>exit_to_app</mat-icon>
+                <span>Logout</span>
+            </button>
+        </mat-menu>
+    </mat-toolbar>
+    
+    <mat-sidenav-container class="example-sidenav-container">
+        <mat-sidenav #sidenav style="width: 250px" mode="push">
+
+            <img src="logo.png" width="128" style="margin-left: 20px">
+
+           <mat-divider></mat-divider>
+            <button class="myButton" [routerLinkActive]="['active']"  mat-menu-item (click)="sidenav.toggle()"
+                routerLink="/components/search" >
+                <mat-icon>search</mat-icon>
+                <span>Search</span>
+            </button>
+            <mat-divider></mat-divider>
+            <button class="myButton" [routerLinkActive]="['active']"  mat-menu-item (click)="sidenav.toggle()"
+                routerLink="/components/booking" >
+                <mat-icon>view_carousel</mat-icon>
+                <span>Register booking.</span>
+            </button>
+            <mat-divider></mat-divider>
+            <button class="components" [routerLinkActive]="['active']" mat-menu-item (click)="sidenav.toggle()"
+                routerLink="/components/book" >
+                <mat-icon>Book</mat-icon>
+                <span>Book</span>
+            </button>
+            <mat-divider></mat-divider>            
+            <button class="myButton" [routerLinkActive]="['active']" mat-menu-item (click)="sidenav.toggle()" 
+                routerLink="/components/category" >
+                <mat-icon>assignment</mat-icon>
+                <span>Category</span>
+            </button>
+            <mat-divider></mat-divider>
+            <button class="myButton" [routerLinkActive]="['active']"  mat-menu-item (click)="sidenav.toggle()"
+                routerLink="/components/customer">
+                <mat-icon>accessibility</mat-icon>
+                <span>Customer</span>
+            </button>
+            <mat-divider></mat-divider>
+            <button class="myButton" [routerLinkActive]="['active']"  mat-menu-item (click)="sidenav.toggle()"
+                routerLink="/components/report" >
+                <mat-icon>assessment</mat-icon>
+                <span>Report booking</span>
+            </button>
+            <mat-divider></mat-divider>
+        </mat-sidenav> 
+
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+
+    </mat-sidenav-container>
+</div>

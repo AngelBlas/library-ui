@@ -1,0 +1,53 @@
+<mat-horizontal-stepper>
+    <mat-step label="principal">
+        <div class="form-container">
+            <form [formRoot]="bookingWizardForm.form">
+                <mat-form-field>
+                    <mat-label>Customer</mat-label>
+                    <mat-select [formField]="bookingWizardForm.form.customer">
+                        @for (item of $customer(); track $index) {
+                        <mat-option [value]="item.customerId">{{ item.firstName }} {{ item.lastName }}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput [matDatepicker]="picker" [min]="minDate"
+                        [formField]="bookingWizardForm.form.reservationDate" disabled>
+                    <mat-hint>DD/MM/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker disabled="false"></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Books</mat-label>
+                    <mat-select [formField]="bookingWizardForm.form.books" multiple>
+                        @for (book of $books(); track $index) {
+                        <mat-option [value]="book.bookId">{{book.title}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <button mat-flat-button style="margin-left: 10px;" (click)="addBooks()">
+                    <span>Add</span>
+                    <mat-icon>Check Circle</mat-icon>
+                </button>
+                <!-- <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Detail {{$detail().customer}}
+                        </mat-panel-title>
+                        <mat-expansion-panel-header> clic for view book</mat-expansion-panel-header>
+                    </mat-expansion-panel-header>
+                    <mat-form-field>
+                        <ul>
+                             @for (item of $detail().books; track $index) {
+                                <li>item</li>
+                             }
+                        </ul>
+                    </mat-form-field>
+                </mat-expansion-panel> -->
+            </form>
+        </div>
+    </mat-step>
+    <mat-step> </mat-step>
+    <mat-step> </mat-step>
+</mat-horizontal-stepper>

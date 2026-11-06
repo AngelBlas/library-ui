@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Book</h2>
+<mat-dialog-content>
+<ul>
+    @for (item of books(); track $index) {
+        <li>{{item}}</li>
+    }
+</ul>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-flat-button mat-dialog-close type="button">
+    <span>Close</span>
+    <mat-icon>Cancel</mat-icon>
+  </button>
+</mat-dialog-actions>

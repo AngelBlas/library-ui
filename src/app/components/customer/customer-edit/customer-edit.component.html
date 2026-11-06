@@ -1,0 +1,57 @@
+<h2 mat-dialog-title>Customers</h2>
+<mat-dialog-content>
+  <form id="book-form" [formRoot]="customerForm.$form" (submit)="operate()">
+    <div hidden="true">
+      <mat-form-field>
+        <mat-label>ID</mat-label>
+        <input matInput placeholder="Id" [formField]="customerForm.$form.customerId" />
+      </mat-form-field>
+    </div>
+    <mat-form-field>
+      <mat-label>FirstName</mat-label>
+      <input matInput placeholder="Id" [formField]="customerForm.$form.firstName" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>LastName</mat-label>
+      <input matInput placeholder="Id" [formField]="customerForm.$form.lastName" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>CardId</mat-label>
+      <input matInput placeholder="Id" [formField]="customerForm.$form.cardId" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="Id" [formField]="customerForm.$form.email" />
+    </mat-form-field>
+    <!-- <mat-form-field>
+
+      <mat-label>Catetoria</mat-label>
+      <input matInput placeholder="Id" [formField]="bookForm.$form.category" />
+    </mat-form-field>
+    <mat-slide-toggle
+      [checked]="bookForm.$form.available().value() === 'S'"
+      (change)="bookForm.$form.available().value.set($event.checked ? 'S' : 'I')"
+      (blur)="bookForm.$form.available().markAsTouched()"
+    >
+      {{ bookForm.$form.available().value() === 'S' ? 'Activo' : 'Inactivo' }}
+    </mat-slide-toggle> -->
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-flat-button mat-dialog-close type="button">
+    <span>Cancel</span>
+    <mat-icon>Cancel</mat-icon>
+  </button>
+  <button
+    matButton="outlined"
+    cdkFocusInitial
+    type="submit"
+    form="book-form"
+    [disabled]="customerForm.$isInvalid()"
+  >
+    <span>Acepted</span>
+    <mat-icon>Check Circle</mat-icon>
+  </button>
+</mat-dialog-actions>
+
